@@ -1,5 +1,7 @@
 # GeoAgent Monitor
 
+![Dashboard Preview](dashboard-preview.png)
+
 Near-real-time satellite change detection and critical-infrastructure risk
 monitoring. Sentinel-2 composites from Google Earth Engine → robust spectral
 change detection → OpenStreetMap proximity scoring → risk report, with a
