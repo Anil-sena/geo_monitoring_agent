@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.venv
+venv
+.env
+.env.example
+
+# Node.js
+node_modules
+npm-debug.log
+frontend/node_modules
+
+# Models and large files
+backend/models_store/
+*.pth
+*.h5
+*.geojson
+*.tif
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+.dockerignore
+
+# IDE
+.vscode
+.idea
