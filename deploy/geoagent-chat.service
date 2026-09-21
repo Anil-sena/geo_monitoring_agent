@@ -1,0 +1,19 @@
+[Unit]
+Description=GeoAgent Monitor analyst console (Chainlit)
+After=network-online.target geoagent-api.service
+
+[Service]
+Type=simple
+User=geoagent
+Group=geoagent
+WorkingDirectory=/opt/geoagent/chat
+Environment=GEOAGENT_API_URL=http://127.0.0.1:8000
+Environment=GEOAGENT_WEB_URL=https://geoagent.example.com
+ExecStart=/opt/geoagent/chat/.venv/bin/chainlit run app.py --host 127.0.0.1 --port 8501 --headless
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

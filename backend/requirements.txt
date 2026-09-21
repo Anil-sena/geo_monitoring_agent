@@ -1,0 +1,38 @@
+# --- API ---
+fastapi>=0.115
+uvicorn[standard]>=0.30
+gunicorn>=22.0
+pydantic>=2.7
+pydantic-settings>=2.3
+sqlalchemy>=2.0.30
+psycopg[binary]>=3.1      # only needed for PostgreSQL
+python-dotenv>=1.0
+python-multipart>=0.0.9
+
+# --- geospatial ---
+earthengine-api>=0.1.400
+rasterio>=1.3.10
+geopandas>=0.14
+shapely>=2.0
+pyproj>=3.6
+numpy>=1.26
+scikit-image>=0.22
+pillow>=10.3
+requests>=2.32
+
+# --- agent ---
+langchain-core>=0.2.30
+langgraph>=0.2.20
+langchain-openai>=0.1.20
+langchain-google-genai>=1.0.8
+
+# --- optional deep-learning path (uncomment to use siamese_lite / fcsiam_diff / smp_unet)
+# torch>=2.2
+# torchvision>=0.17
+# segmentation-models-pytorch>=0.3.3
+# torchgeo>=0.6
+
+# --- optional LULC checkpoints in models_store/ ---
+# tensorflow>=2.15
+# tensorflow-hub>=0.16
+# joblib

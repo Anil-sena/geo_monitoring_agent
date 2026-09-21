@@ -1,0 +1,127 @@
+@import "leaflet/dist/leaflet.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #14202b;
+  --panel: rgba(27, 42, 56, 0.86);
+  --panel-solid: #1b2a38;
+  --line: rgba(230, 237, 243, 0.08);
+  --text: #e6edf3;
+  --muted: #8fa3b5;
+  --amber: #f2a93b;
+  --teal: #3fc1c9;
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-feature-settings: "tnum" 1, "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image:
+    radial-gradient(1200px 600px at 80% -10%, rgba(63, 193, 201, 0.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(242, 169, 59, 0.07), transparent 60%);
+}
+
+/* ---- glass panel ------------------------------------------------------- */
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
+}
+
+/* ---- form controls ---------------------------------------------------- */
+.field {
+  @apply w-full rounded-md bg-ink-900/70 border border-white/10 px-3 py-2 text-sm text-fog-100
+    placeholder:text-fog-700 focus:outline-none focus:border-teal/70 focus:ring-2 focus:ring-teal/20;
+}
+.field-label {
+  @apply block text-xs text-fog-500 mb-1;
+}
+input[type="range"] {
+  @apply w-full h-1.5 rounded-full bg-ink-500 appearance-none cursor-pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full bg-amber border-2 border-ink-900 shadow;
+}
+input[type="range"]::-moz-range-thumb {
+  @apply w-4 h-4 rounded-full bg-amber border-2 border-ink-900;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition
+    focus:outline-none focus-visible:ring-2 focus-visible:ring-teal/50 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.btn-primary {
+  @apply btn bg-amber text-ink-900 hover:bg-amber-soft;
+}
+.btn-ghost {
+  @apply btn bg-white/5 text-fog-100 hover:bg-white/10 border border-white/10;
+}
+
+/* ---- leaflet overrides ------------------------------------------------ */
+.leaflet-container {
+  background: #0b141c;
+  font-family: inherit;
+}
+.leaflet-control-zoom a {
+  background: var(--panel-solid) !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+.leaflet-control-attribution {
+  background: rgba(20, 32, 43, 0.75) !important;
+  color: var(--muted) !important;
+  font-size: 10px;
+}
+.leaflet-control-attribution a {
+  color: var(--teal) !important;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--panel-solid);
+  color: var(--text);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+}
+.leaflet-popup-content {
+  margin: 10px 14px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.map-crosshair .leaflet-container {
+  cursor: crosshair;
+}
+
+/* ---- markdown in chat / report ---------------------------------------- */
+.prose-geo :is(h1, h2, h3) {
+  @apply font-semibold text-fog-100 mt-3 mb-1;
+}
+.prose-geo h1 { @apply text-lg; }
+.prose-geo h2 { @apply text-base; }
+.prose-geo p { @apply my-2 leading-relaxed; }
+.prose-geo ul { @apply list-disc pl-5 my-2 space-y-1; }
+.prose-geo strong { @apply text-fog-100; }
+.prose-geo em { @apply text-fog-500; }
+.prose-geo code { @apply bg-ink-900/70 px-1 py-0.5 rounded text-[12px]; }
+
+/* ---- motion ----------------------------------------------------------- */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse { animation: pulse-dot 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}

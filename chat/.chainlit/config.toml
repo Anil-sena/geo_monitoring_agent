@@ -1,0 +1,10 @@
+[project]
+enable_telemetry = false
+session_timeout = 3600
+
+[features]
+unsafe_allow_html = false
+
+[UI]
+name = "GeoAgent Monitor"
+default_theme = "dark"

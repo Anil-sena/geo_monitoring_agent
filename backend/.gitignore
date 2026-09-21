@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.env
+data/outputs/
+data/previews/
+data/osm_cache/
+data/*.db*
+webui/
+/models_store/resnet/

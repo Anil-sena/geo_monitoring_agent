@@ -1,0 +1,23 @@
+[Unit]
+Description=GeoAgent Monitor web (Next.js)
+After=network-online.target geoagent-api.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=geoagent
+Group=geoagent
+WorkingDirectory=/opt/geoagent/frontend
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=127.0.0.1
+Environment=API_INTERNAL_URL=http://127.0.0.1:8000
+# `next build` with output:"standalone" produces this self-contained server
+ExecStart=/usr/bin/node /opt/geoagent/frontend/.next/standalone/server.js
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
